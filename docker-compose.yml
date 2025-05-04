@@ -10,6 +10,7 @@ services:
       - NODE_ENV=production
     volumes:
       - ./n8n-data:/home/node/.n8n
+    user: "1000:1000"  # あなたのユーザーIDとグループIDに変更
     restart: always
 
   # ollama:
