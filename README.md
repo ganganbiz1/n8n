@@ -1,4 +1,4 @@
-# n8n-bedrock
+# n8n
 
 ## Dockerを使ったn8nのローカルホスティング
 
@@ -8,7 +8,7 @@
 
 1. リポジトリをクローンする
 ```bash
-git clone https://github.com/yourusername/n8n-bedrock.git
+git clone git@github.com:ganganbiz1/n8n.git
 cd n8n-bedrock
 ```
 
