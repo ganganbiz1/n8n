@@ -4,12 +4,14 @@ services:
     ports:
       - "5678:5678"
     environment:
-      - N8N_HOST=localhost
+      - N8N_HOST=${N8N_HOST:-localhost}
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
       - NODE_ENV=production
       - N8N_ENCRYPTION_KEY=YourVerySecureEncryptionKey123
       - N8N_SECURE_COOKIE=false
+      - N8N_DISABLE_PRODUCTION_MAIN_PROCESS=true
+      - N8N_IGNORE_SSL_ISSUES=true
     volumes:
       - ./n8n-data:/home/node/.n8n
     restart: always
