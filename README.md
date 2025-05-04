@@ -47,3 +47,48 @@ n8nのデータは `./n8n-data` ディレクトリに保存されます。
 ```bash
 docker-compose down
 ```
+
+EC2で以下をやった
+
+```
+# Update packages
+sudo dnf update -y
+
+# Install Docker dependencies
+sudo dnf install -y docker
+
+# Start and enable Docker service
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add your user to the docker group to run Docker without sudo
+sudo usermod -aG docker $USER
+
+# Apply group changes (or you can log out and back in)
+newgrp docker
+
+# Verify installation
+docker version
+```
+
+```
+# Download Docker Compose binary
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+# Make it executable
+sudo chmod +x /usr/local/bin/docker-compose
+
+# Verify installation
+docker-compose --version
+```
+
+```
+# n8n-dataディレクトリが存在しない場合は作成
+mkdir -p ./n8n-data
+
+# 権限を適切に設定（nodeユーザーがコンテナ内で使用するUID 1000）
+sudo chown -R 1000:1000 ./n8n-data
+
+# 確実に書き込み権限を付与
+sudo chmod -R 755 ./n8n-data
+```
